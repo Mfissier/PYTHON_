@@ -1,14 +1,18 @@
-from utils.files.check_update_file import check_update_file
+#!/usr/bin/env python
+# -*- codage : utf-8 -*-
+"""
+    Main fun
+"""
 from utils.files.find_file import find_file
-from utils.print.print_error import print_error
-import time
+from utils.syst_os.take_plateform import check_operating_system
 
 def main() :
 #
-    print('here for test')
-    print(check_update_file('main.py'))
-    time.sleep(4)
-    print(check_update_file('main.py'))
+    """
+    This main is juste for test
+    """
+    check_operating_system(mod_dev = True)
+    find_file("main.py", mod_dev = True)
 #
 
 if __name__ == "__main__":
