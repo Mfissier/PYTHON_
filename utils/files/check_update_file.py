@@ -26,10 +26,6 @@ class file :
         file.new_time = time
         return (time)
 
-
-
-
-
 def files_time_modified(filepath):
 #
     try :
