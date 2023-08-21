@@ -78,9 +78,4 @@ def check_update_file(filename) :
 # [1] if the file has been modified
 # [0] if nothing happened
 # [None] if there was an error.
-# > #
-# check_update_file('main.py') 
-#  \ 1 init variable static
-# if (check_update_file('main.py')) 
-#  \ 2  Check if file is update
-# < #
+# #
