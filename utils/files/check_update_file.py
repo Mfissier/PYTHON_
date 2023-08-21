@@ -10,16 +10,9 @@ class file :
     new_time = 0
 
     @staticmethod
-    def get_rec_time() :
-        return(file.rec_time)
-
-    @staticmethod
     def change_rec_time(time) :
         file.rec_time = time
         return (time)
-    @staticmethod
-    def get_new_time() :
-        return(file.new_time)
 
     @staticmethod
     def change_new_time(time) :
