@@ -44,7 +44,7 @@ def find_file(name, mod_dev = False):
 #
     """
         Search and take path with filename
-        ex: main.py return(/path/to/main.py)
+        ex: main.py return(main.py)
         opt(mod_dev = True) for see diagnostic
     """
     if mod_dev is True :
@@ -84,7 +84,7 @@ def find_file(name, mod_dev = False):
     #
     if mod_dev is True :
     #
-        print_red('Path error | empty')
+        print_red('The path was not found')
         print_blue('----------------')
     #
     return None
