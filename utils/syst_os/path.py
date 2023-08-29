@@ -30,6 +30,7 @@ def path_default(path = None, mode_dev = False) :
         if mode_dev :
             print_green(f'The path by default is : {path}' )
             print_blue('---------------')
+        # change path
         return path
     else :
         if mode_dev :
@@ -49,7 +50,7 @@ def is_dir(path, mode_dev = False) :
             print_yellow(f'Path : {path}  | is dir [True]')
         return (True)
     #
-    else : 
+    else :
     #
         if mode_dev is True :
             print_yellow(f'Path : {path}  | is not a dir [False]')
