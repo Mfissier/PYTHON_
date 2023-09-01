@@ -3,13 +3,21 @@ import os
 from utils.files.find_directory import find_directory
 from utils.print.print_color import print_blue, print_green, print_red, print_yellow
 
-def create_search_dir(folder_name, path, mode_dev=False) :
+def create_search_folder(folder_name, path_dir, mode_dev=False) :
 #
-    print_blue('Fun : create_search_dir')
-    if path is None :
+    """_Description_
+    Args:
+        folder_name (string): name of folder
+        path_dir (string): The path where we will create the file
+        mode_dev (bool, optional): True for see diagnostique
+    Returns:
+        string : the path of folder create or None if error
+    """
+    print_blue('Fun : create_search_folder')
+    if path_dir is None :
     #
         if mode_dev is True :
-            print_red('Error : path is None')
+            print_red('Error : path_dir is None')
         return None
     #
     if folder_name is None :
@@ -19,16 +27,16 @@ def create_search_dir(folder_name, path, mode_dev=False) :
             return None
     #
     folder_name = os.path.basename(folder_name)
-    path = os.path.basename(path)
-    path = find_directory(path, mode_dev)
-    if path is None :
+    path_dir = os.path.basename(path_dir)
+    path_dir = find_directory(path_dir, mode_dev)
+    if path_dir is None :
     #
         if mode_dev is True :
-            print_red('Error : Path not found')
+            print_red('Error : path_dir not found')
             return None
         return None
     #
-    folder_name = os.path.join(path, folder_name)
+    folder_name = os.path.join(path_dir, folder_name)
     try:
     #
         os.mkdir(folder_name)

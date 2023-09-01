@@ -2,15 +2,22 @@
     recyp : find_file, check_file_is_clone
 """
 import os
+from utils.files.find_directory import find_directory
 from utils.print.print_color import print_blue, print_green, print_red, print_yellow
 
-def check_file_is_clone(name, mode_dev=False) :
+def check_file_is_clone(name, target_folder=None, mode_dev=False) :
 #
     """
         Checks if the file is in several copies from the program execution directory
     """
     path = os.path.dirname(os.path.join(os.getcwd(), ''))
     name = os.path.basename(name)
+    if target_folder is not None :
+    #
+        path = find_directory(target_folder)
+        if path == None :
+            return None
+    #
     count = 0
     all_path = []
     if mode_dev is True :
@@ -41,7 +48,7 @@ def check_file_is_clone(name, mode_dev=False) :
     return False
 #
 
-def find_file(name, mod_dev = False):
+def find_file(name, target_folder = None ,mod_dev = False):
 #
     """
         Search and take path with filename
@@ -58,7 +65,17 @@ def find_file(name, mod_dev = False):
     #
     name = os.path.basename(name)
     path = os.path.dirname(os.path.join(os.getcwd(), ''))
-    if (check_file_is_clone(name, mod_dev) is True) :
+    if target_folder is not None :
+    #
+        path = find_directory(target_folder)
+        if path == None :
+        #
+            print_red('Error : target_folder does not exist')
+            return None
+        #
+        print_yellow('Mode target_folder activate :\n' + path)
+    #
+    if (check_file_is_clone(name, target_folder, mod_dev) is True) :
     #
         if mod_dev is True :
         #

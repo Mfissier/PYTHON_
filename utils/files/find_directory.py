@@ -3,6 +3,18 @@ from utils.print.print_color import print_blue, print_green, print_red, print_ye
 
 def find_directory(name, mode_dev=False) :
 #
+    """
+    Description :
+        Search the folder path in the current directory
+    Args:
+        name (string): The name of the folder to search for
+        mode_dev (bool, optional): True for see diagnostique
+    Returns:
+        (string): The folder path or None if there was an error
+    Exept : 
+        Limite of search in ".." or redirects the search to the current directory
+    """
+
     if mode_dev is True :
         print_blue('fun : find_directory')
     if name is None :
