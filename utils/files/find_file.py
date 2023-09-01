@@ -10,9 +10,10 @@ def check_file_is_clone(name, mode_dev=False) :
         Checks if the file is in several copies from the program execution directory
     """
     path = os.path.dirname(os.path.join(os.getcwd(), ''))
+    name = os.path.basename(name)
     count = 0
     all_path = []
-    if mode_dev is True :    
+    if mode_dev is True :
         print_blue('Fun : check_file_is_clone()')
     for root, dir, files in os.walk(path) :
     #
