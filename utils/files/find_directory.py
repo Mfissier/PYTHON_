@@ -25,12 +25,14 @@ def find_directory(name, mode_dev=False) :
     name = os.path.normpath(name)
     if name == '.':
     #
-        print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), ''))))
+        if mode_dev is True :
+            print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), ''))))
         return os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '')))
     #
     if name == '..':
     #
-        print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '../..'))))        
+        if mode_dev is True :
+            print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '../..'))))        
         return os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '../..')))
     #
     path = os.path.dirname(os.path.join(os.getcwd(), '../'))
