@@ -5,7 +5,8 @@ from utils.print.print_color import print_blue, print_green, print_red, print_ye
 
 def create_search_folder(folder_name, path_dir, mode_dev=False) :
 #
-    """_Description_
+    """Description
+    Allows you to create a folder by specifying the path
     Args:
         folder_name (string): name of folder
         path_dir (string): The path where we will create the file
