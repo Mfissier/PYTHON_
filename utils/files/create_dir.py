@@ -29,7 +29,7 @@ def create_search_folder(folder_name, path_dir, mode_dev=False) :
     #
     folder_name = os.path.basename(folder_name)
     path_dir = os.path.basename(path_dir)
-    path_dir = find_directory(path_dir, mode_dev)
+    path_dir = find_directory(path_dir, mode_dev=mode_dev)
     if path_dir is None :
     #
         if mode_dev is True :

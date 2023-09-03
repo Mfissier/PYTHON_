@@ -26,11 +26,11 @@ def main() :
     # is_file_search('path.py', mode_dev = True)
     # path_dir = find_directory("PYTHON_", mode_dev = True)
     # print(path_dir)
-    # create_search_folder("test", "./PYTHON_/utils", mode_dev=True)
+    create_search_folder("test", "./PYTHON_/utils", mode_dev=True)
     # find_directory()
     
     # print(find_file("print_error.py", mod_dev=True))
-    # create_search_file('test1.txt', "./utils", mode_dev=True)
+    create_search_file('test1.txt', 'PYTHON_', mode_dev=True)
     # rm_file('test', mode_dev=True)
     # find_directory('LAA', target_folder='CCCC',mode_dev=True)
     # rm_dir('test', mode_dev=True)
