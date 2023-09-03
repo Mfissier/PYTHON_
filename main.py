@@ -6,8 +6,11 @@
 # from utils.files.check_update_file import check_update_file
 from utils.files.create_dir import create_search_folder
 from utils.files.create_file import create_search_file
-from utils.files.find_directory import find_directory
+from utils.files.delete_file import rm_file
+from utils.files.delete_folder import rm_dir
+from utils.files.find_directory import check_folder_is_clone, find_directory
 from utils.files.find_file import check_file_is_clone, find_file
+from utils.files.rm_rf import rm_rf
 # from utils.syst_os.take_plateform import check_operating_system
 # import time
 from utils.syst_os.path import is_dir, is_file_search, path_default
@@ -23,11 +26,16 @@ def main() :
     # is_file_search('path.py', mode_dev = True)
     # path_dir = find_directory("PYTHON_", mode_dev = True)
     # print(path_dir)
-    create_search_folder("test", "./PYTHON_/utils", mode_dev=True)
+    # create_search_folder("test", "./PYTHON_/utils", mode_dev=True)
     # find_directory()
+    
+    # print(find_file("print_error.py", mod_dev=True))
     # create_search_file('test1.txt', "./utils", mode_dev=True)
+    # rm_file('test', mode_dev=True)
+    # find_directory('test',mode_dev=True)
+    # rm_dir('test', mode_dev=True)
+    rm_rf('test', mode_dev=True)
 #
 
 if __name__ == "__main__":
     main()
-

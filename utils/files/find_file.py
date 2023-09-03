@@ -44,22 +44,22 @@ def check_file_is_clone(name, target_folder=None, mode_dev=False) :
         return True
     #
     if mode_dev is True :
-        print_yellow('The file is unique')
+        print_green('The file is unique')
     return False
 #
 
-def find_file(name, target_folder = None ,mod_dev = False):
+def find_file(name, target_folder = None , mode_dev=False):
 #
     """
         Search and take path with filename
         ex: main.py return(main.py)
-        opt(mod_dev = True) for see diagnostic
+        opt(mode_dev = True) for see diagnostic
     """
-    if mod_dev is True :
+    if mode_dev is True :
         print_blue('Fun : find_file()')
     if name is None :
     #
-        if mod_dev is True :
+        if mode_dev is True :
             print_red('Var name is None')
         return None
     #
@@ -75,9 +75,9 @@ def find_file(name, target_folder = None ,mod_dev = False):
         #
         print_yellow('Mode target_folder activate :\n' + path)
     #
-    if (check_file_is_clone(name, target_folder, mod_dev) is True) :
+    if (check_file_is_clone(name, target_folder, mode_dev) is True) :
     #
-        if mod_dev is True :
+        if mode_dev is True :
         #
             print_red('A potential error has been found. \n' +
                       'The search file exists in several copies.')
@@ -91,7 +91,7 @@ def find_file(name, target_folder = None ,mod_dev = False):
         # 
             if name in elem :
             #
-                if mod_dev is True :
+                if mode_dev is True :
                 #
                     print_green(f"Result path is :\n{os.path.join(root, name)}")
                     print_blue('----------------')
@@ -100,7 +100,7 @@ def find_file(name, target_folder = None ,mod_dev = False):
             #
         #
     #
-    if mod_dev is True :
+    if mode_dev is True :
     #
         print_red('The path was not found')
         print_blue('----------------')

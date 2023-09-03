@@ -1,7 +1,54 @@
 import os
 from utils.print.print_color import print_blue, print_green, print_red, print_yellow
 
-def find_directory(name, mode_dev=False) :
+
+def check_folder_is_clone(name, target_folder=None, mode_dev=False) :
+#
+    path = os.path.dirname(os.path.join(os.getcwd(), '../..'))
+    name = os.path.basename(name)
+    all_path = []
+    count = 0
+    for root, dir, files in os.walk(path) :
+    #
+        for elem in dir :
+        #
+            if name == elem:
+            #
+                if (target_folder is not None) :
+                #   
+                    if target_folder == os.path.basename(os.path.dirname(os.path.normpath(os.path.join(root, elem)))) :
+                    #   
+                        all_path.append(os.path.join(root, elem))
+                        count += 1
+                   #   
+                #   
+                else :
+                #   
+                    all_path.append(os.path.join(root, name))
+                    count += 1
+                #   
+            #
+        #
+    #
+    if (len(all_path) > 1) :
+    #
+        if mode_dev is True :
+            print_red(f'The folder as been cloned')
+            print_red(f'Use var target_folder for make a choice in :\n{all_path}')
+        return None
+    #
+    if (not all_path) :
+    #
+        if mode_dev is True :
+            print_yellow('The folder not found !')
+        return None
+    #
+    if mode_dev is True :
+        print_green(f'The folder is unique :\n{os.path.normpath(all_path[0])}')
+    return (os.path.normpath(all_path[0]))
+#
+
+def find_directory(name,  target_folder=None, mode_dev=False) :
 #
     """
     Description :
@@ -14,7 +61,8 @@ def find_directory(name, mode_dev=False) :
     Exept : 
         Limite of search in ".." or redirects the search to the current directory
     """
-
+    #!TODO : Add a search for double folder name
+    #!TODO : Add argument target_folder
     if mode_dev is True :
         print_blue('fun : find_directory')
     if name is None :
@@ -40,12 +88,15 @@ def find_directory(name, mode_dev=False) :
     for root, dir, files in os.walk(path) :
     #
         for elem in dir :
-        #
+        #        
             if name == elem:
             #
                 if mode_dev is True :
                     print_yellow(f'Path directory is : {os.path.normpath(os.path.join(root, elem))}')
-                return (os.path.normpath(os.path.join(root, elem)))
+                if target_folder is not None :
+                        return (check_folder_is_clone(name, target_folder=target_folder, mode_dev=mode_dev))
+                else :
+                        return (check_folder_is_clone(name, mode_dev=mode_dev))
             #
         #
     #
