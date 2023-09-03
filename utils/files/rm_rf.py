@@ -42,11 +42,11 @@ def forceDelete(path, target_folder=None, mode_dev=False) :
     #
     elif (find_path_file is not None) :
     #
-        print_yellow('The file is found')
+        rm_file(find_path_file, target_folder=target_folder, mode_dev=mode_dev)
     #
     else :
     #
         print_red('Detect file or folder failed')
+        return None
     #
-    return None
 #

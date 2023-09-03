@@ -37,7 +37,7 @@ def main() :
     # print(is_folder_empty('CCCC', mode_dev=False))
     # list_all_folder(find_directory('CCCC'), mode_dev=True)
     forceDelete('test_rm', mode_dev=True)
-    find_file('test1.txt', target_folder='PYTHON_', mode_dev=True)
+    # find_file('test1.txt', target_folder='PYTHON_', mode_dev=True)
 #
 
 if __name__ == "__main__":
