@@ -9,6 +9,12 @@ def check_file_is_clone(name, target_folder=None, mode_dev=False) :
 #
     """
         Checks if the file is in several copies from the program execution directory
+        args :
+            name (string) : name of file
+            target_folder (string /optional) : path of folder
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            True if file is clone
     """
     path = os.path.dirname(os.path.join(os.getcwd(), ''))
     name = os.path.basename(name)

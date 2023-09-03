@@ -4,6 +4,15 @@ from utils.print.print_color import print_blue, print_green, print_red, print_ye
 
 def check_folder_is_clone(name, target_folder=None, mode_dev=False) :
 #
+    """
+        Checks if the folder is in several copies from the program execution directory
+        args :
+            name (string) : name of folder
+            target_folder (string /optional) : path of folder
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            True if folder is clone
+    """
     path = os.path.dirname(os.path.join(os.getcwd(), '../..'))
     name = os.path.basename(name)
     all_path = []

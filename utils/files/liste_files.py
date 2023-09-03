@@ -5,6 +5,15 @@ from utils.print.print_color import print_yellow
 
 def list_files(path, target_folder=None, mode_dev=False) :
 #
+    """
+        # Attempt to list the files in the folder
+        args :
+            path (string) : path of folder
+            target_folder (string /optional) : path of folder
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            files_and_folders (list) or None if error
+    """
     path = find_directory(path, target_folder=target_folder, mode_dev=mode_dev)
     if path == None :
         return None
@@ -14,6 +23,15 @@ def list_files(path, target_folder=None, mode_dev=False) :
 
 def is_folder_empty(path, target_folder=None, mode_dev=False) :
 #
+    """
+        # Check if the folder is empty
+        args :
+            path (string) : path of folder
+            target_folder (string /optional) : path of folder
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            True if folder is empty
+    """
     files_and_folders = list_files(path, target_folder=target_folder, mode_dev=mode_dev)
     if (files_and_folders == None) :
         return None
@@ -24,6 +42,15 @@ def is_folder_empty(path, target_folder=None, mode_dev=False) :
 
 def list_all_folder(name, target_folder=None, mode_dev=False) :
 #
+    """
+        list all folder with path absolute
+        args :
+            name (string) : name of folder for search
+            target_folder (string /optional) : path of folder
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            all_path (list) : list path of folder
+    """
     path = os.path.dirname(os.path.join(os.getcwd(), '../..'))
     name = os.path.basename(name)
     all_path = []
