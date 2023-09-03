@@ -14,7 +14,8 @@ def create_search_folder(folder_name, path_dir, mode_dev=False) :
     Returns:
         string : the path of folder create or None if error
     """
-    print_blue('Fun : create_search_folder')
+    if mode_dev is True :
+        print_blue('Fun : create_search_folder')
     if path_dir is None :
     #
         if mode_dev is True :

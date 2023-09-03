@@ -13,6 +13,8 @@ def check_folder_is_clone(name, target_folder=None, mode_dev=False) :
         return :
             True if folder is clone
     """
+    if mode_dev is True :
+        print_blue('Fun : check_folder_is_clone()')
     path = os.path.dirname(os.path.join(os.getcwd(), '../..'))
     name = os.path.basename(name)
     all_path = []
@@ -70,8 +72,6 @@ def find_directory(name,  target_folder=None, mode_dev=False) :
     Exept : 
         Limite of search in ".." or redirects the search to the current directory
     """
-    #!TODO : Add a search for double folder name
-    #!TODO : Add argument target_folder
     if mode_dev is True :
         print_blue('fun : find_directory')
     if name is None :

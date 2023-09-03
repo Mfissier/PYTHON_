@@ -14,8 +14,8 @@ def create_search_file(file_name, path_dir, mode_dev=False) :
     Returns:
         string : the path of file create or None if error
     """
-
-    print_blue('Fun : create_search_file')
+    if mode_dev is True :
+        print_blue('Fun : create_search_file')
     if path_dir is None :
     #
         if mode_dev is True :

@@ -4,7 +4,7 @@ from utils.files.delete_folder import rm_dir
 from utils.files.find_directory import find_directory
 from utils.files.find_file import find_file
 from utils.files.liste_files import is_folder_empty, list_all_folder, list_files
-from utils.print.print_color import print_green, print_red, print_yellow
+from utils.print.print_color import print_blue, print_green, print_red, print_yellow
 
 
 def all_filesDelete(path, target_folder=None, mode_dev=False) :
@@ -18,6 +18,8 @@ def all_filesDelete(path, target_folder=None, mode_dev=False) :
         return :
             path (string) or None if error
     """
+    if mode_dev is True :
+        print_blue('Fun : all_filesDelete()')
     all_files = list_files(path, target_folder=target_folder, mode_dev=mode_dev)
     if (all_files is None) :
         return None
@@ -39,6 +41,8 @@ def forceDelete(path, target_folder=None, mode_dev=False) :
         return :
             path (string) or None if error
     """
+    if mode_dev is True :
+        print_blue('Fun : forceDelete()')
     find_path_folder = find_directory(path, target_folder=target_folder, mode_dev=mode_dev)
     find_path_file = find_file(path, target_folder=target_folder, mode_dev=mode_dev)
     if (find_path_folder is not None and find_path_file is not None) :
