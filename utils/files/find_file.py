@@ -28,13 +28,10 @@ def check_file_is_clone(name, target_folder=None, mode_dev=False) :
     #
     count = 0
     all_path = []
-    if mode_dev is True :
-        print_blue('Fun : check_file_is_clone()')
     for root, dir, files in os.walk(path) :
     #
         for elem in files :
         #
-            # print(os.path.join(root, elem)) # for see all path
             if name in elem:
             #
                 all_path.append(os.path.join(root, name))

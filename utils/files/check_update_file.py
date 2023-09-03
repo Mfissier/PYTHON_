@@ -39,7 +39,13 @@ class file :
 
 def files_time_modified(filepath):
 #
-    """take_time when the file is modify"""
+    """
+        take_time when the file is modify
+        args :
+            filepath (string) : path of file
+        return :
+            file_mod_date (datetime) or None if error
+    """
     try :
     #
         timestamp = os.path.getmtime(filepath)
@@ -50,19 +56,25 @@ def files_time_modified(filepath):
         return None
 #
 
-def check_update_file(filename, mode_dev = False) :
+def check_update_file(filename, target_folder=None, mode_dev = False) :
 #
     """
         The first call to this function is just to initialize a record. 
         The next calls will tell if the named file has had a change
+        This function must be called once to instantiate its static variables.
+        # [1] if the file has been modified # [0] if nothing happened # [None] if there was an error.
+        args :
+            filename (string) : name of file
+            mode_dev (bool /optionnal) : True for see diagnostique
         ex :
         1/ check_update_file("main.py") (init)
         2/ check_update_file("main.py") (check)
         this function return (1): if main.py is modify
     """
+
     if mode_dev :
         print_blue('Fun : check_update_file()')
-    path = find_file(filename)
+    path = find_file(filename, target_folder=target_folder, mode_dev=mode_dev)
     if not path :
     #
         if mode_dev :
@@ -79,8 +91,10 @@ def check_update_file(filename, mode_dev = False) :
         if not rec_time :
         #
             if mode_dev :
+            #
                 print_yellow('First time call. Register file time...')
                 print_blue('------------------------')
+            #
             rec_time = file.change_rec_time(tmp_time)
             return 0
         #
@@ -91,20 +105,21 @@ def check_update_file(filename, mode_dev = False) :
             #
                 rec_time = file.change_rec_time(tmp_time)
                 if mode_dev :
+                #
                     print_green('The file has been modified')
                     print_blue('------------------------')
+                #
                 return 1
             #
             else :
+            #
                 if mode_dev :
+                #
                     print_green('Result : The file has not been modified')
                     print_blue('------------------------')
+                #
                 return 0
+            #
         #
     #
 #
-
-# #
-# This function must be called once to instantiate its static variables.
-# [1] if the file has been modified # [0] if nothing happened # [None] if there was an error.
-# #
