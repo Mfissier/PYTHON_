@@ -16,7 +16,7 @@ def check_folder_is_clone(name, target_folder=None, mode_dev=False) :
             #
                 if (target_folder is not None) :
                 #   
-                    if target_folder == os.path.basename(os.path.dirname(os.path.normpath(os.path.join(root, elem)))) :
+                    if target_folder in os.path.normpath(os.path.join(root, elem)):
                     #   
                         all_path.append(os.path.join(root, elem))
                         count += 1
