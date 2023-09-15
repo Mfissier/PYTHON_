@@ -1,7 +1,49 @@
+"""
+    Library for file management
+    content :
+        files_time_modified(filepath)
+        check_update_file(filename, target_folder=None)
+        create_search_folder(folder_name, path_dir)
+        create_search_file(file_name, path_dir)
+        rm_file(file, target_folder=None)
+        rm_filesdir(path, target_folder=None)
+        rm_dir(folder, target_folder=None)
+        rm_force(path, target_folder=None)
+        check_file_is_clone(name, target_folder=None)
+        find_file(name, target_folder = None )
+        check_folder_is_clone(name, target_folder=None)
+        find_folder(name,  target_folder=None)
+        ls_files(path, target_folder=None)
+        ls_allfolder(name, target_folder=None)
+        is_folder_empty(path, target_folder=None)
+        read_no_error(path)
+        readfile_to_str(file, target_folder=None)
+        readfile_to_json(file, target_folder=None)
+        is_valid_path(path)
+        path_default(path = None, mode_dev = False)
+        is_dir(path, mode_dev = False)
+        check_operating_system(mod_dev = False)
+        is_folder_exist(folder, target_folder=None)
+        is_file_search(path, mode_dev = False)
+    
+    comment :
+        This module is a library for file management and dev more easely
+        This library will facilitate development when you want to manage an environment with python.
+        It is imperative to check that the files, folder, create are not the same names.
+        Of course, it is always possible to focus on a particular folder. 
+        This constraint forces you to choose carefully the way you organize your rest and, 
+        above all, to make path management more understandable.
+
+        Each function has a description and usage examples.
+        In addition, mode_dev allows you to see possible errors in depth, if you need in-depth debugging
+
+    dependance :
+        Python 3.8.10 (default, May 26 2023, 14:05:08) | os | datetime | pylint 
+"""
+
 import os
 import datetime
-import sys
-
+from pathlib import Path
 from utils.print.print_color import print_blue, print_green, print_red, print_yellow
 
 class file :
@@ -161,7 +203,7 @@ def create_search_folder(folder_name, path_dir, mode_dev=False) :
     #
     folder_name = os.path.basename(folder_name)
     path_dir = os.path.basename(path_dir)
-    path_dir = find_directory(path_dir, mode_dev=mode_dev)
+    path_dir = find_folder(path_dir, mode_dev=mode_dev)
     if path_dir is None :
     #
         if mode_dev is True :
@@ -226,7 +268,7 @@ def create_search_file(file_name, path_dir, mode_dev=False) :
     #
     file_name = os.path.basename(file_name)
     path_dir = os.path.basename(path_dir)
-    path_dir = find_directory(path_dir, mode_dev=mode_dev)
+    path_dir = find_folder(path_dir, mode_dev=mode_dev)
     if path_dir is None :
     #
         if mode_dev is True :
@@ -284,7 +326,7 @@ def rm_file(file, target_folder=None, mode_dev=False) :
         #
             os.remove(file_path)
             if mode_dev is True :
-                print_yellow(f"The file '{file_path}' has been successfully deleted.")
+                print_green(f"The file '{file_path}' has been successfully deleted.")
             return file_path
         #
         except OSError as e:
@@ -317,7 +359,7 @@ def rm_dir(folder, target_folder=None, mode_dev=False) :
     """
     if mode_dev is True :
         print_blue('fun : rm_dir')
-    folder_path = find_directory(folder, target_folder=target_folder, mode_dev=mode_dev)
+    folder_path = find_folder(folder, target_folder=target_folder, mode_dev=mode_dev)
     if folder_path :
     #
         try:
@@ -396,7 +438,7 @@ def check_folder_is_clone(name, target_folder=None, mode_dev=False) :
     return (os.path.normpath(all_path[0]))
 #
 
-def find_directory(name,  target_folder=None, mode_dev=False) :
+def find_folder(name,  target_folder=None, mode_dev=False) :
 #
     """
         Description :
@@ -409,11 +451,11 @@ def find_directory(name,  target_folder=None, mode_dev=False) :
         Exept : 
             Limite of search in ".." or redirects the search to the current directory
         exemple :
-            find_directory('PYTHON_', target_folder='PYTHON_')
+            find_folder('PYTHON_', target_folder='PYTHON_')
             # search the path of folder PYTHON_ in the folder PYTHON_    
     """
     if mode_dev is True :
-        print_blue('fun : find_directory')
+        print_blue('fun : find_folder')
     if name is None :
     #
         print_red('Error : Var name is None')
@@ -474,7 +516,7 @@ def check_file_is_clone(name, target_folder=None, mode_dev=False) :
     name = os.path.basename(name)
     if target_folder is not None :
     #
-        path = find_directory(target_folder)
+        path = find_folder(target_folder)
         if path == None :
             return None
     #
@@ -533,7 +575,7 @@ def find_file(name, target_folder = None , mode_dev=False):
     path = os.path.dirname(os.path.join(os.getcwd(), ''))
     if target_folder is not None :
     #
-        path = find_directory(target_folder)
+        path = find_folder(target_folder)
         if path == None :
         #
             print_red('Error : target_folder does not exist')
@@ -574,7 +616,7 @@ def find_file(name, target_folder = None , mode_dev=False):
     return None
 #
 
-def list_files(path, target_folder=None, mode_dev=False) :
+def ls_files(path, target_folder=None, mode_dev=False) :
 #
     """
         # Attempt to list the files in the folder
@@ -587,12 +629,12 @@ def list_files(path, target_folder=None, mode_dev=False) :
         exept :
             if file not found or folder is clone in the folder
         exemple :
-            list_files('utils', target_folder='PYTHON_', mode_dev=True)
+            ls_files('utils', target_folder='PYTHON_', mode_dev=True)
             # list the files[] in PYTHON_/utils
     """
     if mode_dev is True :
-        print_blue('Fun : list_files()')
-    path = find_directory(path, target_folder=target_folder, mode_dev=mode_dev)
+        print_blue('Fun : ls_files()')
+    path = find_folder(path, target_folder=target_folder, mode_dev=mode_dev)
     if path == None :
         return None
     files_and_folders = os.listdir(path)
@@ -620,7 +662,7 @@ def is_folder_empty(path, target_folder=None, mode_dev=False) :
     """
     if mode_dev is True :
         print_blue('Fun : is_folder_empty()')
-    files_and_folders = list_files(path, target_folder=target_folder, mode_dev=mode_dev)
+    files_and_folders = ls_files(path, target_folder=target_folder, mode_dev=mode_dev)
     if (files_and_folders == None) :
         return None
     elif (len(files_and_folders)) :
@@ -634,7 +676,7 @@ def is_folder_empty(path, target_folder=None, mode_dev=False) :
     return True
 #
 
-def list_all_folder(name, target_folder=None, mode_dev=False) :
+def ls_allfolder(name, target_folder=None, mode_dev=False) :
 #
     """
         list all folder with path absolute
@@ -645,11 +687,11 @@ def list_all_folder(name, target_folder=None, mode_dev=False) :
         return :
             all_path (list) : list path of folder
         exemple :
-            list_all_folder('PYTHON_', target_folder='PYTHON_', mode_dev=True)
+            ls_allfolder('PYTHON_', target_folder='PYTHON_', mode_dev=True)
             # list all folder with name PYTHON_ in the folder PYTHON_
     """
     if mode_dev is True :
-        print_blue('Fun : list_all_folder()')
+        print_blue('Fun : ls_allfolder()')
     path = os.path.dirname(os.path.join(os.getcwd(), '../..'))
     name = os.path.basename(name)
     all_path = []
@@ -780,7 +822,7 @@ def readfile_to_json(file, target_folder=None, mode_dev=False) :
         return None
 #
 
-def all_filesDelete(path, target_folder=None, mode_dev=False) :
+def rm_filesdir(path, target_folder=None, mode_dev=False) :
 #
     """
         # Attempt to remove all files in the folder
@@ -790,12 +832,12 @@ def all_filesDelete(path, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             path (string) or None if error
-            exemple : all_filesDelete('utils', target_folder='PYTHON_', mode_dev=True)
+            exemple : rm_filesdir('utils', target_folder='PYTHON_', mode_dev=True)
             # delete the files in PYTHON_/utils/*
     """
     if mode_dev is True :
-        print_blue('Fun : all_filesDelete()')
-    all_files = list_files(path, target_folder=target_folder, mode_dev=mode_dev)
+        print_blue('Fun : rm_filesdir()')
+    all_files = ls_files(path, target_folder=target_folder, mode_dev=mode_dev)
     if (all_files is None) :
         return None
     for file in all_files :
@@ -805,7 +847,7 @@ def all_filesDelete(path, target_folder=None, mode_dev=False) :
     return path
 #
 
-def forceDelete(path, target_folder=None, mode_dev=False) :
+def rm_force(path, target_folder=None, mode_dev=False) :
 #
     """
         # Attempt to remove the file or the folder and all files in the folder
@@ -818,12 +860,12 @@ def forceDelete(path, target_folder=None, mode_dev=False) :
         exept :
             if file not found or file is clone in the folder
         exemple :
-            forceDelete('test1.txt', target_folder='PYTHON_', mode_dev=True)
+            rm_force('test1.txt', target_folder='PYTHON_', mode_dev=True)
             # delete the file test1.txt in the folder PYTHON_
     """
     if mode_dev is True :
-        print_blue('Fun : forceDelete()')
-    find_path_folder = find_directory(path, target_folder=target_folder, mode_dev=mode_dev)
+        print_blue('Fun : rm_force()')
+    find_path_folder = find_folder(path, target_folder=target_folder, mode_dev=mode_dev)
     find_path_file = find_file(path, target_folder=target_folder, mode_dev=mode_dev)
     if (find_path_folder is not None and find_path_file is not None) :
     #
@@ -840,11 +882,11 @@ def forceDelete(path, target_folder=None, mode_dev=False) :
         # 
         else :
         # 
-            all_folder = list_all_folder(find_path_folder, target_folder=target_folder, mode_dev=mode_dev)
+            all_folder = ls_allfolder(find_path_folder, target_folder=target_folder, mode_dev=mode_dev)
             all_folder.reverse()
             for elem in all_folder :
             # 
-                all_filesDelete(elem, target_folder=path, mode_dev=mode_dev)
+                rm_filesdir(elem, target_folder=path, mode_dev=mode_dev)
                 if rm_dir(elem, target_folder=path, mode_dev=mode_dev) == None :
                 #
                     if mode_dev is True :
@@ -923,4 +965,106 @@ def write_in_file(file, content, target_folder=None, mode_dev=False) :
             return False
     #
     return False
+#
+
+def is_valid_path(path) :
+#
+    """Check if the path exists on the current system"""
+    return (os.path.exists(path))
+#
+
+def path_default(path = None, mode_dev = False) :
+#
+    """
+    Allows you to choose or not a default path. 
+    If no path specified, it will be the path of the current project repo,
+    otherwise it will be the one given in parameter
+    """
+    if mode_dev :
+        print_blue('fun : path_default')
+    if not path :
+        path = os.getcwd()
+    if not path.endswith(os.path.sep):
+        path += os.path.sep
+    if is_valid_path(path) :
+        if mode_dev :
+            print_green(f'The path by default is : {path}' )
+            print_blue('---------------')
+        return path
+    else :
+        if mode_dev :
+            print_green('The path by default is false...')
+            print_blue('---------------')
+        return None
+#
+
+def is_dir(path, mode_dev = False) :
+#
+    """Determines if the path points to a folder"""
+    if mode_dev is True :
+        print_blue('Fun : is_dir()')
+    if Path(path).is_dir() is True :
+    #
+        if mode_dev is True :
+            print_yellow(f'Path : {path}  | is dir [True]')
+        return (True)
+    #
+    else :
+    #
+        if mode_dev is True :
+            print_yellow(f'Path : {path}  | is not a dir [False]')
+        return (False)
+    #
+#
+
+def is_file_search(path, mode_dev = False) :
+#
+    """Determines if the path points to a file"""
+    if mode_dev is True :
+        print_blue('Fun : is_file()')
+    path = find_file(path, mode_dev)
+    if path is None :
+    #
+        if mode_dev is True :
+            print_red('Path error, setting -> [None]...')
+        return None
+    #
+    if Path(path).is_file() is True :
+    #
+        if mode_dev is True :
+            print_yellow(f'Path : {path}  | is file [True]')
+        return True
+    #
+    else :
+    #
+        if mode_dev is True :
+            print_yellow(f'Path : {path}  | is not a file [False]')
+        return False
+    #
+#
+
+def check_operating_system(mod_dev = False) :
+#
+    """ 
+    Return name of operating system
+    opt(mod_dev = True) for see diagnostic
+    """
+    if mod_dev is True :
+        print_blue('Fun : check_operating_system()')
+    #-------------------------------
+    if os.name == 'posix' :
+        if mod_dev is True :
+            print_green('Result : Linux or MacOs')
+    elif os.name == 'nt':
+        if mod_dev is True :
+            print_green('Result : Windows')
+    elif os.name == 'java' :
+        if mod_dev is True :
+            print_green('Result : Jython environment')
+    else:
+        if mod_dev is True :
+            print_green(f"Rsult : Unrecognized platform: {os.name}")
+    if mod_dev :
+        print_blue('----------------')
+    return os.name
 #
