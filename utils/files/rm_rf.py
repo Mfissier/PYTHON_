@@ -17,6 +17,8 @@ def all_filesDelete(path, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             path (string) or None if error
+            exemple : all_filesDelete('utils', target_folder='PYTHON_', mode_dev=True)
+            # delete the files in PYTHON_/utils/*
     """
     if mode_dev is True :
         print_blue('Fun : all_filesDelete()')
@@ -40,6 +42,11 @@ def forceDelete(path, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             path (string) or None if error
+        exept :
+            if file not found or file is clone in the folder
+        exemple :
+            forceDelete('test1.txt', target_folder='PYTHON_', mode_dev=True)
+            # delete the file test1.txt in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('Fun : forceDelete()')

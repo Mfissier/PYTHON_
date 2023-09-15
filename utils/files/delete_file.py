@@ -12,6 +12,11 @@ def rm_file(file, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal)
         return :
             file_path (string) or None if error
+        exept :
+            if file not found or file is clone in the folder
+        exemple :
+            rm_file('test.txt', target_folder='PYTHON_')
+            # delete the file test.txt in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('fun : rm_dir')

@@ -13,6 +13,11 @@ def list_files(path, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             files_and_folders (list) or None if error
+        exept :
+            if file not found or folder is clone in the folder
+        exemple :
+            list_files('utils', target_folder='PYTHON_', mode_dev=True)
+            # list the files[] in PYTHON_/utils
     """
     if mode_dev is True :
         print_blue('Fun : list_files()')
@@ -35,6 +40,12 @@ def is_folder_empty(path, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             True if folder is empty
+        exept :
+            if file not found or folder is clone in the folder
+        exemple :
+            is_folder_empty('test.txt', target_folder='PYTHON_', mode_dev=True)
+            # return false
+            # check if the file test.txt in the folder PYTHON_ is empty 
     """
     if mode_dev is True :
         print_blue('Fun : is_folder_empty()')
@@ -62,6 +73,9 @@ def list_all_folder(name, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             all_path (list) : list path of folder
+        exemple :
+            list_all_folder('PYTHON_', target_folder='PYTHON_', mode_dev=True)
+            # list all folder with name PYTHON_ in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('Fun : list_all_folder()')

@@ -5,14 +5,19 @@ from utils.print.print_color import print_blue, print_green, print_red, print_ye
 
 def create_search_folder(folder_name, path_dir, mode_dev=False) :
 #
-    """Description
-    Allows you to create a folder by specifying the path
-    Args:
-        folder_name (string): name of folder
-        path_dir (string): The path where we will create the file
-        mode_dev (bool, optional): True for see diagnostique
-    Returns:
-        string : the path of folder create or None if error
+    """
+        Allows you to create a folder by specifying the path
+        Args:
+            folder_name (string): name of folder
+            path_dir (string): The path where we will create the file
+            mode_dev (bool, optional): True for see diagnostique
+        Returns:
+            string : the path of folder create or None if error
+        exept :
+            if file not found or folder is clone in the folder
+        exemple :
+            create_search_folder('test', 'PYTHON_')
+            # create the folder test in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('Fun : create_search_folder')

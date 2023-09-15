@@ -1,7 +1,7 @@
 """
     All main fun for print color in terminal
 """
-
+import sys
 from termcolor import colored
 
 def print_red(txt) :
@@ -10,7 +10,7 @@ def print_red(txt) :
         for print txt in red
     """
     if txt :
-        print(colored(txt, 'red'))
+        sys.stderr.write(colored(txt, 'red'))
 #
 
 def print_blue(txt) :

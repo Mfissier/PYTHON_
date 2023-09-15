@@ -45,6 +45,9 @@ def files_time_modified(filepath):
             filepath (string) : path of file
         return :
             file_mod_date (datetime) or None if error
+        exemple :
+            files_time_modified('test.txt')
+            # return datetime.datetime(2021, 8, 10, 15, 30, 0, 0)
     """
     try :
     #
@@ -66,6 +69,8 @@ def check_update_file(filename, target_folder=None, mode_dev = False) :
         args :
             filename (string) : name of file
             mode_dev (bool /optionnal) : True for see diagnostique
+        exept :
+            if file not found or file is clone in the folder
         ex :
         1/ check_update_file("main.py") (init)
         2/ check_update_file("main.py") (check)

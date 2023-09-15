@@ -6,13 +6,18 @@ from utils.print.print_color import print_blue, print_green, print_red, print_ye
 def create_search_file(file_name, path_dir, mode_dev=False) :
 #
     """Description
-    Allows you to create a folder by specifying the path
-    Args:
-        file_name (string): name of file
-        path_dir (string): the path directory for create a file
-        mode_dev (bool, optional): True for see diagnostique
-    Returns:
-        string : the path of file create or None if error
+        Allows you to create a folder by specifying the path
+        Args:
+            file_name (string): name of file
+            path_dir (string): the path directory for create a file
+            mode_dev (bool, optional): True for see diagnostique
+        Returns:
+            string : the path of file create or None if error
+        exept :
+            if file not found or folder is clone in the folder
+        exemple :
+            create_search_file('test.txt', 'PYTHON_')
+            # create the file test.txt in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('Fun : create_search_file')

@@ -15,6 +15,9 @@ def check_file_is_clone(name, target_folder=None, mode_dev=False) :
             mode_dev (bool /optionnal) : True for see diagnostique
         return :
             True if file is clone
+        exemple :
+            check_file_is_clone('main.py', target_folder='PYTHON_')
+            # check if the file main.py is clone in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('Fun : check_file_is_clone()')
@@ -57,8 +60,17 @@ def find_file(name, target_folder = None , mode_dev=False):
 #
     """
         Search and take path with filename
-        ex: main.py return(main.py)
-        opt(mode_dev = True) for see diagnostic
+        args :
+            name (string) : name of file
+            target_folder (string /optional) : path of folder
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            path (string) : path of file or None if error
+        exept :
+            if file not found or file is clone in the folder
+        exemple :
+            find_file('main.py', target_folder='PYTHON_')
+            # search the path of file main.py in the folder PYTHON_
     """
     if mode_dev is True :
         print_blue('Fun : find_file()')
