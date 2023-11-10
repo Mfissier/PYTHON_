@@ -10,7 +10,8 @@ def print_red(txt) :
         for print txt in red
     """
     if txt :
-        sys.stderr.write(colored(txt, 'red'))
+        sys.stderr.write(colored(txt + '\n', 'red'))
+        
 #
 
 def print_blue(txt) :
