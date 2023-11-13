@@ -2,7 +2,6 @@
 from utils.files.pyos import * 
 import heapq
 
-
 def check_map_is_rect(map2D, mode_dev=False) :
 #
     """
@@ -33,7 +32,7 @@ def check_map_is_rect(map2D, mode_dev=False) :
         #
     #
     if mode_dev :
-        print_green("The map is rectangular.")
+        print_yellow("The map is rectangular.")
     return True
 #
 
@@ -82,7 +81,7 @@ def check_characters_map_is_good(map2D, mode_dev=False) :
         return False
     #
     if mode_dev :
-        print_green("The map is valid.")
+        print_yellow("The map is valid.")
     return True
 #
 
@@ -119,6 +118,30 @@ def reconstruct_map2D(map2D, mode_dev=False) :
     if mode_dev :
         print_green(f"The new map is : {new_map2D}")
     return new_map2D
+#
+
+def reconstruct_path(parents, start, goal, mode_dev=False):
+#
+    """
+        This function reconstructs the path from the start to the goal.
+        @param ( {} ) parents: The dictionary of parents
+        @param ( tuple ) start: The start position
+        @param ( tuple ) goal: The goal position
+        @return ( [tuple,] ): The path from the start to the goal
+    """
+    if mode_dev :
+        print_blue("fun : reconstruct_path")
+    path = []
+    current = goal
+    while current != start:
+    #
+        path.append(current)
+        current = parents[current]
+    #
+    path.append(start)
+    if mode_dev :
+        print_green(f"The path is : {path}")
+    return list(reversed(path))
 #
 
 def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
@@ -168,10 +191,9 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
     # Initialize the priority queue for A*
     priority_queue = []
     heapq.heappush(priority_queue, (0, player_pos))
-
     # Create a dictionary to keep track of visited cells and distances
     visited = {player_pos: 0}
-
+    parents = {}
     while priority_queue:
     #
         distance, current_pos = heapq.heappop(priority_queue)
@@ -179,8 +201,9 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
         if current_pos == enemy_pos:
         #
             if mode_dev :
-                print_green(f"The distance between the player and the enemy is : {distance} cells.")
-            return distance
+                print_yellow(f"The distance between the player and the enemy is : {distance} cells.")
+            path = reconstruct_path(parents, player_pos, enemy_pos, mode_dev=mode_dev)
+            return distance, path
         #
         for dx, dy in directions:
         #
@@ -193,8 +216,9 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
                 # Check if the new position has not been visited or if a shorter path has been found
                 if new_pos not in visited or new_distance < visited[new_pos]:
                 #
-                    visited[new_pos] = new_distance
                     heapq.heappush(priority_queue, (new_distance, new_pos))
+                    visited[new_pos] = new_distance
+                    parents[new_pos] = current_pos
                 #
             #
         #
@@ -203,15 +227,3 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
         print_red("No path was found.")
     return -1
 #
-emoji : dict = {
-    "0" : "🟩",
-    "1" : "🟦",
-    "P" : "🟨",
-    "E" : "🟥"
-}
-emoji : ok = {  
-    "0" : "🟩",
-    "1" : "🟦",
-    "P" : "🟨",
-    "E" : "🟥"
-}
