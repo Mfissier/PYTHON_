@@ -74,7 +74,7 @@ def check_characters_map_is_good(map2D, mode_dev=False) :
                 check_ennemy += 1
         #
     #
-    if check_players != 1 or check_ennemy != 1:
+    if check_players != 1 or check_ennemy < 1:
     #
         if mode_dev :
             print_red("The map need one player and one ennemy")
@@ -165,7 +165,7 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
         map2D = reconstruct_map2D(map2D, mode_dev=mode_dev)
     # Check if the map is valid
     if (check_characters_map_is_good(map2D, mode_dev=mode_dev) == False) :
-        return -1
+        return False
     rows = len(map2D)
     cols = len(map2D[0])
     # Find the positions of the player (P) and the enemy (E)
@@ -183,7 +183,7 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
     #
     # Check if the player and enemy have been found
     if player_pos is None or enemy_pos is None:
-        return -1  # Unable to calculate distance
+        return False  # Unable to calculate distance
 
     # Define possible movements (up, down, left, right)
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -191,6 +191,7 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
     # Initialize the priority queue for A*
     priority_queue = []
     heapq.heappush(priority_queue, (0, player_pos))
+
     # Create a dictionary to keep track of visited cells and distances
     visited = {player_pos: 0}
     parents = {}
@@ -225,5 +226,5 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
     #
     if mode_dev :
         print_red("No path was found.")
-    return -1
+    return False
 #
