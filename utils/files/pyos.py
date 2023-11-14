@@ -1,6 +1,7 @@
 """
     Library for file management
     content :
+        create_json_file(data, file_name, mode_dev=False)
         files_time_modified(filepath)
         check_update_file(filename, target_folder=None)
         create_search_folder(folder_name, path_dir)
@@ -42,6 +43,7 @@
 """
 
 import os
+import json
 import datetime
 from pathlib import Path
 from utils.print.print_color import print_blue, print_green, print_red, print_yellow
@@ -79,6 +81,55 @@ class file :
     #
 #
 
+def create_json_file(data, file_name, mode_dev=False) :
+#
+    """
+        Create a json file with data
+        args :
+            data (dict) : data for save in json file
+            file_name (string) : name of file
+            mode_dev (bool /optionnal) : True for see diagnostique
+        return :
+            None if error
+        exemple :
+            create_json_file(data, 'test.json', mode_dev=True)
+            # create the file test.json with data
+    """
+    if data is None :
+    #
+        if mode_dev :
+            print_red('Error : data is None')
+        return None
+    #
+    if file_name is None :
+    #
+        if mode_dev :
+            print_red('Error : file_name is None')
+        return None
+    try:
+    #
+        with open(file_name, "w") as json_file:
+            json.dump(data, json_file, indent=4)
+        print_yellow(f"JSON data has been successfully saved to {file_name}")
+    #
+    except FileNotFoundError:
+    #
+        print(f"Error: File '{file_name}' not found.")
+        return None
+    #
+    except IOError as e:
+    #
+        print(f"Error: An I/O error occurred while writing to '{file_name}': {e}")
+        return None
+    #
+    except Exception as e:
+    #
+        print(f"An unexpected error occurred: {e}") 
+        return None
+    #
+    return True
+#
+
 def files_time_modified(filepath):
 #
     """
@@ -100,6 +151,8 @@ def files_time_modified(filepath):
     except : # pylint: disable=bare-except
         return None
 #
+
+
 
 def check_update_file(filename, target_folder=None, mode_dev = False) :
 #

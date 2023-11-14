@@ -62,12 +62,12 @@ def check_characters_map_is_good(map2D, mode_dev=False) :
     #
         for char in row:
         #
-            if char not in ['0', '1', 'P', 'E']:
-            #
-                if mode_dev :
-                    print_red("The map contains invalid characters.")
-                return False
-            #
+            # if char not in ['0', '1', 'P', 'E']:
+            # #
+            #     if mode_dev :
+            #         print_red("The map contains invalid characters.")
+            #     return False
+            # #
             if char == 'P':
                 check_players += 1
             elif char == 'E':

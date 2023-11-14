@@ -4,6 +4,7 @@
     Main fun
 """
 from syst_exp.create_maps_with_diff_ennemies import create_maps_with_different_enemies
+from syst_exp.calculate_distance2D import calculate_distance2D
 from syst_exp.fill_all_map2D_diff_ennemies import fill_all_map2D_diff_ennemies
 from syst_exp.fill_map2D_origin import fill_map2D_origin
 from syst_exp.list_to_2d_array import list_to_2d_array
@@ -17,11 +18,12 @@ def main() :
     This main is juste for test
     """
     map_2d = [
-        "E00000000",
-        "000000100",
-        "011111110",
-        "000E0000P"
+        ["E","0","0","0","0","0","0","0","0"],
+        ["0","0","0","0","0","0","1","0","0"],
+        ["0","1","1","1","1","1","1","1","0"],
+        ["0","0","0","E","0","0","0","0","P"]
     ]
+
     if (fill_map2D_origin(map_2d, mode_dev=True) == False) :
     # 
         print_red("The map is None.")
@@ -31,19 +33,8 @@ def main() :
     #
         print_red("The calcul failed !")
         return False
-    # 
-    # test = readfile_to_json('data/map2D/map2D_diff_ennemies.json', mode_dev=True)
-    # test = 
-    # result = json.loads(test)
-    # print(result["map2D_diff_ennemies"])
-    # map_2d = create_maps_with_different_enemies(map_2d, mode_dev=True)
-    # list_tab = []
-    # for map in map_2d:
-    # #
-    #     list_tab.append(list(map))
-    #     new_tab = list_to_2d_array(map, mode_dev=True)
-    # #
-        # test = calculate_player_to_enemy_moves(new_tab, mode_dev=True)
+    #
+    calculate_distance2D((0,5), (2,0), mode_dev=True)   
 #
 if __name__ == "__main__":
     main()
