@@ -110,7 +110,8 @@ def create_json_file(data, file_name, mode_dev=False) :
     #
         with open(file_name, "w") as json_file:
             json.dump(data, json_file, indent=4)
-        print_yellow(f"JSON data has been successfully saved to {file_name}")
+        if mode_dev :
+            print_yellow(f"JSON data has been successfully saved to {file_name}")
     #
     except FileNotFoundError:
     #

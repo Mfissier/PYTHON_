@@ -28,13 +28,13 @@ def fill_map2D_origin(map2D_origin, mode_dev=False) :
             print_red("The map has a bad characters.")
         return False
     #
-    create_search_folder('data', '.', mode_dev=True)
-    create_search_folder('map2D', '/data', mode_dev=True)
-    create_search_file('map2D_origin.json', 'map2D', mode_dev=True)
+    create_search_folder('data', '.', mode_dev=mode_dev)
+    create_search_folder('map2D', '/data', mode_dev=mode_dev)
+    create_search_file('map2D_origin.json', 'map2D', mode_dev=mode_dev)
     data = {
         "map2D_origin": map2D_origin,
     }
-    if (create_json_file(data, find_file('map2D_origin.json'), mode_dev=True) == None) :
+    if (create_json_file(data, find_file('map2D_origin.json'), mode_dev=mode_dev) == None) :
         return False
     return True
 #

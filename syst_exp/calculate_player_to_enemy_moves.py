@@ -187,7 +187,8 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
 
     # Define possible movements (up, down, left, right)
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
+    distance = None
+    path = None
     # Initialize the priority queue for A*
     priority_queue = []
     heapq.heappush(priority_queue, (0, player_pos))
@@ -226,5 +227,5 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
     #
     if mode_dev :
         print_red("No path was found.")
-    return False
+    return distance, path
 #
