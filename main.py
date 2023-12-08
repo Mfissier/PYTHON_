@@ -19,12 +19,11 @@ def main() :
     """
     map_2d = [
         ["E","1","0","0","E","0","0","0","1"],
-        ["0","0","E","1","E","0","1","E","0"],
+        ["0","0","E","1","0","0","1","E","0"],
         ["0","1","1","1","1","1","1","1","0"],
         ["0","0","0","E","0","0","1","0","P"]
     ]
-
-    if (fill_map2D_origin(map_2d) == False) :
+    if (fill_map2D_origin(map_2d, mode_dev=True) == False) :
     # 
         print_red("The map is None.")
         return False
@@ -35,7 +34,6 @@ def main() :
         return False
     #
     calculate_distance2D((0,5), (2,0), mode_dev=True)
-
 #
 if __name__ == "__main__":
     main()

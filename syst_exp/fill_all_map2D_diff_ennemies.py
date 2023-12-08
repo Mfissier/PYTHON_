@@ -16,8 +16,8 @@ def fill_all_map2D_diff_ennemies(map2D_origin, mode_dev=False) :
             print_red("The map is None.")
         return False
     #
-    create_search_folder('data', '.', mode_dev=mode_dev)
-    create_search_folder('map2D', '/data', mode_dev=mode_dev)
+    create_search_folder('data', mode_dev=mode_dev)
+    create_search_folder('data/map2D', mode_dev=mode_dev)
     map_stat = {
         "map_nb_path" : [],
         "map_path_mv" : []

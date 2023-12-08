@@ -225,7 +225,7 @@ def check_update_file(filename, target_folder=None, mode_dev = False) :
     #
 #
 
-def create_search_folder(folder_name, path_dir, mode_dev=False) :
+def create_search_folder(folder_name, mode_dev=False) :
 #
     """
         Allows you to create a folder by specifying the path
@@ -243,29 +243,13 @@ def create_search_folder(folder_name, path_dir, mode_dev=False) :
     """
     if mode_dev is True :
         print_blue('Fun : create_search_folder')
-    if path_dir is None :
-    #
-        if mode_dev is True :
-            print_red('Error : path_dir is None')
-        return None
-    #
     if folder_name is None :
     #
         if mode_dev is True :
             print_red('Error : folder_name is None')
             return None
     #
-    folder_name = os.path.basename(folder_name)
-    path_dir = os.path.basename(path_dir)
-    path_dir = find_folder(path_dir, mode_dev=mode_dev)
-    if path_dir is None :
-    #
-        if mode_dev is True :
-            print_red('Error : path_dir not found')
-            return None
-        return None
-    #
-    folder_name = os.path.join(path_dir, folder_name)
+    folder_name = os.path.join(os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), ''))) , folder_name)
     try:
     #
         os.mkdir(folder_name)
@@ -515,7 +499,6 @@ def find_folder(name,  target_folder=None, mode_dev=False) :
         print_red('Error : Var name is None')
         return None
     #
-    name = os.path.normpath(name)
     if name == '.':
     #
         if mode_dev is True :
@@ -525,11 +508,10 @@ def find_folder(name,  target_folder=None, mode_dev=False) :
     if name == '..':
     #
         if mode_dev is True :
-            print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '../..'))))        
-        return os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '../..')))
+            print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '..'))))        
+        return os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '..')))
     #
-    path = os.path.dirname(os.path.join(os.getcwd(), '../'))
-    name = os.path.basename(name)
+    path = os.path.dirname(os.path.join(os.getcwd(), '.'))
     for root, dir, files in os.walk(path) :
     #
         for elem in dir :
@@ -919,7 +901,7 @@ def rm_force(path, target_folder=None, mode_dev=False) :
     """
     if mode_dev is True :
         print_blue('Fun : rm_force()')
-    find_path_folder = find_folder(path, target_folder=target_folder, mode_dev=mode_dev)
+    find_path_folder = os.path.join(os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), ''))) , find_path_folder)
     find_path_file = find_file(path, target_folder=target_folder, mode_dev=mode_dev)
     if (find_path_folder is not None and find_path_file is not None) :
     #
