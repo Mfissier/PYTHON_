@@ -30,6 +30,8 @@ def fill_map2D_origin(map2D_origin, mode_dev=False) :
     #
     create_search_folder('data', mode_dev=mode_dev)
     create_search_folder('data/map2D', mode_dev=mode_dev)
+    create_search_folder('data/IA', mode_dev=mode_dev)
+    create_search_file('IA.json', 'IA', mode_dev=mode_dev)
     create_search_file('map2D_origin.json', 'map2D', mode_dev=mode_dev)
     data = {
         "map2D_origin": map2D_origin,

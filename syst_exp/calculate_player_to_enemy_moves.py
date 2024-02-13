@@ -46,6 +46,8 @@ def check_characters_map_is_good(map2D, mode_dev=False) :
         - '1' represents a wall
         - 'P' represents the player
         - 'E' represents the enemy
+        - 'I' represents the invocation
+        - 'A' represents the allie
         @return ( bool ): True if the map has a bad characters, False otherwise
     """
     if mode_dev :
@@ -73,7 +75,7 @@ def check_characters_map_is_good(map2D, mode_dev=False) :
             elif char == 'E':
                 check_ennemy += 1
         #
-    #
+    # if player is dead and game continue ?
     if check_players != 1 or check_ennemy < 1:
     #
         if mode_dev :
@@ -95,6 +97,8 @@ def reconstruct_map2D(map2D, mode_dev=False) :
         - '1' represents a wall
         - 'P' represents the player
         - 'E' represents the enemy
+        - 'I' represents the invocation
+        - 'A' represents the allie
         @return ( ['',] ): The new 2D map
     """
     if mode_dev :

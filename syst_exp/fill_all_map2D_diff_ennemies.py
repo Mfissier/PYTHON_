@@ -40,7 +40,6 @@ def fill_all_map2D_diff_ennemies(map2D_origin, mode_dev=False) :
     }
     if (create_json_file(data, 'data/map2D/map2D_diff_ennemies.json', mode_dev=mode_dev) == None) :
     #
-
         if mode_dev :
             print_red("The map is None.")    
         return False
