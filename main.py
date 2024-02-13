@@ -39,7 +39,6 @@ def main() :
     #
     data_map = readfile_to_json('data/map2D/map2D_diff_ennemies.json', mode_dev=True)
     data_map = json.loads(data_map)
-
 #
 if __name__ == "__main__":
     main()

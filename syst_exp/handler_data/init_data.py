@@ -65,7 +65,7 @@ def init_data(mode_dev=False) :
             print_red("The files [data/IA/IA.json] error : create")
         return False
     #
-    if (create_json_file(BOT_IA, find_file('IA.json'), mode_dev=True) == None) :
+    if (create_json_file(BOT_IA, find_file('IA.json')) == None) :
     #
         if mode_dev :
             print_red("The files [data/IA/IA.json] error : write json file")
