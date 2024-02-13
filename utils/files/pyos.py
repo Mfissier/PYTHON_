@@ -261,7 +261,7 @@ def create_search_folder(folder_name, mode_dev=False) :
     #
         if mode_dev is True :
             print_red(f"Directory '{folder_name}' already exists")
-        return None
+        return True
     #
     except OSError as error:
     #
@@ -326,7 +326,7 @@ def create_search_file(file_name, path_dir, mode_dev=False) :
     #
         if mode_dev is True :
             print_red(f"File '{file_name}' already exists")
-        return None
+        return True
     #
     except OSError as error:
     #
