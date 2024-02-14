@@ -23,12 +23,6 @@ def fill_all_map2D_diff_ennemies(map2D_origin, mode_dev=False) :
             print_red("The folder [data] error : create")
         return False
     #
-    if (create_search_folder('data/map2D', mode_dev=mode_dev) is None) :
-    #
-        if mode_dev :
-            print_red("The folder [data/map2D] error : create")
-        return False
-    #
     BOT_IA = readfile_to_json('data/IA/IA.json', mode_dev=mode_dev)
     if BOT_IA is None :
     #
