@@ -24,21 +24,18 @@ def main() :
         ["0","0","0","0","0","0","1","0","P"]
     ]
     import json
-    init_data(mode_dev=True) # Create the file IA.json
-
-    if (fill_map2D_origin(map_2d, mode_dev=True) == False) :
+    init_data() # Create the file IA.json
+    if (fill_map2D_origin(map_2d) == False) :
     #
         print_red("The map is None.")
         return False
     #
 
-    if (fill_all_map2D_diff_ennemies(map_2d, mode_dev=True) == False) :
+    if (fill_all_map2D_diff_ennemies(map_2d) == False) :
     #
         print_red("The calcul failed !")
         return False
     #
-    data_map = readfile_to_json('data/map2D/map2D_diff_ennemies.json', mode_dev=True)
-    data_map = json.loads(data_map)
 #
 if __name__ == "__main__":
     main()

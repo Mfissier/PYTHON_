@@ -1,5 +1,20 @@
 from utils.files.pyos import *
 
+def formulaire_ennemy() :
+#
+    """
+        This function returns the formulaire of the ennemy.
+        @return ( dict ) : The formulaire of the ennemy
+    """
+    return {
+        "position" : [0,0],
+        "distance" : 0,
+        "path" : [],
+        "life" : 0,
+        "Spell" : [""]
+    }
+#
+
 def init_data(mode_dev=False) :
 #
     """
@@ -8,13 +23,13 @@ def init_data(mode_dev=False) :
     """
     if mode_dev :
         print_blue("fun : init_data")
-        BOT_IA = {
+    BOT_IA = {
         "Map" : ["P","E", "I", "A", "1", "0"],
         "Ennemy" : [
             {
                 "position" : [0,0],
                 "distance" : 0,
-                "path" : [[0,0],[0,0]],
+                "path" : [],
                 "life" : 0,
                 "Spell" : [""]
             }
@@ -47,25 +62,25 @@ def init_data(mode_dev=False) :
         ]
     }
     
-    if (create_search_folder('data') == None) :
+    if (create_search_folder('data', mode_dev=mode_dev) == None) :
     #
         if mode_dev :
             print_red("The folder [data] error : create")
         return False
     #
-    if (create_search_folder('data/IA') == None) :
+    if (create_search_folder('data/IA', mode_dev=mode_dev) == None) :
     #
         if mode_dev :
             print_red("The folder [data/IA] error : create")
         return False
     #
-    if (create_search_file('IA.json', 'IA') == None) :
+    if (create_search_file('IA.json', 'IA', mode_dev=mode_dev) == None) :
     #
         if mode_dev :
             print_red("The files [data/IA/IA.json] error : create")
         return False
     #
-    if (create_json_file(BOT_IA, find_file('IA.json')) == None) :
+    if (create_json_file(BOT_IA, find_file('IA.json', mode_dev=mode_dev), mode_dev=mode_dev) == None) :
     #
         if mode_dev :
             print_red("The files [data/IA/IA.json] error : write json file")

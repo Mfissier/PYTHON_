@@ -29,7 +29,7 @@ def fill_map2D_origin(map2D_origin, mode_dev=False) :
         return False
     #
     import json
-    BOT_IA = readfile_to_json('data/IA/IA.json', mode_dev=True)
+    BOT_IA = readfile_to_json('data/IA/IA.json', mode_dev=mode_dev)
     if BOT_IA is None :
     #
         if mode_dev :
