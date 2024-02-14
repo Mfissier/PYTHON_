@@ -22,7 +22,7 @@ def init_data(mode_dev=False) :
         @return ( bool ): True if the data is initialized, False otherwise
     """
     if mode_dev :
-        print_blue("fun : init_data")
+        print_blue("Fun : init_data")
     BOT_IA = {
         "Map" : ["P","E", "I", "A", "1", "0"],
         "Ennemy" : [

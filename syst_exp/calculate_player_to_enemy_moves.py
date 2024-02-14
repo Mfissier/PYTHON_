@@ -15,7 +15,7 @@ def check_map_is_rect(map2D, mode_dev=False) :
         @return ( bool ): True if the map is rectangular, False otherwise
     """
     if mode_dev :
-        print_blue("fun : check_map_is_rect")
+        print_blue("Fun : check_map_is_rect")
     if map2D is None:
     #
         if mode_dev :
@@ -51,7 +51,7 @@ def check_characters_map_is_good(map2D, mode_dev=False) :
         @return ( bool ): True if the map has a bad characters, False otherwise
     """
     if mode_dev :
-        print_blue("fun : check_characters_map_is_good")
+        print_blue("Fun : check_characters_map_is_good")
     if map2D is None:
     #
         if mode_dev :
@@ -102,7 +102,7 @@ def reconstruct_map2D(map2D, mode_dev=False) :
         @return ( ['',] ): The new 2D map
     """
     if mode_dev :
-        print_blue("fun : reconstruct_map2D")
+        print_blue("Fun : reconstruct_map2D")
     len_max = 0
     for row in map2D:
     #
@@ -134,7 +134,7 @@ def reconstruct_path(parents, start, goal, mode_dev=False):
         @return ( [tuple,] ): The path from the start to the goal
     """
     if mode_dev :
-        print_blue("fun : reconstruct_path")
+        print_blue("Fun : reconstruct_path")
     path = []
     current = goal
     while current != start:
@@ -163,7 +163,7 @@ def calculate_player_to_enemy_moves(map2D, mode_dev=False) :
         If no path is found, the function returns -1.
     """
     if mode_dev :
-        print_blue("fun : map2D_calcul_player_ennemy_mouve")
+        print_blue("Fun : map2D_calcul_player_ennemy_mouve")
     # Check if the map is rectangular and reconstruct it if necessary
     if (check_map_is_rect(map2D, mode_dev=mode_dev) == False) :
         map2D = reconstruct_map2D(map2D, mode_dev=mode_dev)

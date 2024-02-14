@@ -30,7 +30,6 @@ def main() :
         print_red("The map is None.")
         return False
     #
-
     if (fill_all_map2D_diff_ennemies(map_2d) == False) :
     #
         print_red("The calcul failed !")

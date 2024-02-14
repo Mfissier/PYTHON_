@@ -15,7 +15,7 @@ def create_maps_with_different_enemies(original_map, mode_dev=False):
         @return ( [ ['',], ] ): The list of maps with different enemies
     """
     if mode_dev:
-        print_blue("fun : create_maps_with_different_enemies")
+        print_blue("Fun : create_maps_with_different_enemies")
     if original_map is None:
     #  
         if mode_dev:

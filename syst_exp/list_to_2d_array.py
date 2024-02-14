@@ -7,7 +7,7 @@ def list_to_2d_array(input_list, mode_dev=False):
         @return tab( [[],] ): The 2D array
     """
     if mode_dev:
-        print_blue("fun : list_to_2d_array")
+        print_blue("Fun : list_to_2d_array")
     if input_list is None:
     #  
         if mode_dev:

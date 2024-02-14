@@ -356,7 +356,7 @@ def rm_file(file, target_folder=None, mode_dev=False) :
             # delete the file test.txt in the folder PYTHON_
     """
     if mode_dev is True :
-        print_blue('fun : rm_dir')
+        print_blue('Fun : rm_dir')
     file_path = find_file(file, target_folder=target_folder, mode_dev=mode_dev)
     if file_path :
     #
@@ -396,7 +396,7 @@ def rm_dir(folder, target_folder=None, mode_dev=False) :
             # delete the folder test in the folder PYTHON_
     """
     if mode_dev is True :
-        print_blue('fun : rm_dir')
+        print_blue('Fun : rm_dir')
     folder_path = find_folder(folder, target_folder=target_folder, mode_dev=mode_dev)
     if folder_path :
     #
@@ -493,7 +493,7 @@ def find_folder(name,  target_folder=None, mode_dev=False) :
             # search the path of folder PYTHON_ in the folder PYTHON_    
     """
     if mode_dev is True :
-        print_blue('fun : find_folder')
+        print_blue('Fun : find_folder')
     if name is None :
     #
         print_red('Error : Var name is None')
@@ -764,7 +764,7 @@ def read_no_error(path, mode_dev=False) :
     """
     all_lines = ""
     if mode_dev is True :
-        print_blue('fun : read_no_error')
+        print_blue('Fun : read_no_error')
     try:
     #
         with open(path, 'r') as file:
@@ -813,7 +813,7 @@ def readfile_to_str(file, target_folder=None, mode_dev=False) :
             # read the file test.txt in the folder PYTHON_
     """
     if mode_dev is True :
-        print_blue('fun : readfile_to_str')
+        print_blue('Fun : readfile_to_str')
     content = ""
     path_file = find_file(file, target_folder=target_folder, mode_dev=mode_dev)
     if path_file :
@@ -844,7 +844,7 @@ def readfile_to_json(file, target_folder=None, mode_dev=False) :
             # read the file test.json in the folder PYTHON_ and convert to json
     """
     if mode_dev is True :
-        print_blue('fun : readfile_to_str')
+        print_blue('Fun : readfile_to_str')
     content = ""
     path_file = find_file(file, target_folder=target_folder, mode_dev=mode_dev)
     if path_file :
@@ -970,7 +970,7 @@ def write_in_file(file, content, target_folder=None, mode_dev=False) :
             write_in_file('path/test1.txt', 'content', target_folder='PYTHON_', mode_dev=True)
     """
     if mode_dev is True :
-        print_blue('fun : write_in_file')
+        print_blue('Fun : write_in_file')
     path_file = find_file(file, target_folder=target_folder, mode_dev=mode_dev)
     if path_file :
     #
@@ -1017,7 +1017,7 @@ def path_default(path = None, mode_dev = False) :
     otherwise it will be the one given in parameter
     """
     if mode_dev :
-        print_blue('fun : path_default')
+        print_blue('Fun : path_default')
     if not path :
         path = os.getcwd()
     if not path.endswith(os.path.sep):
