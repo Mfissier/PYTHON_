@@ -967,6 +967,7 @@ def write_in_file(file, content, target_folder=None, mode_dev=False) :
         exept :
             if file not found or file is clone in the folder
         exemple :
+            content = "Hello world"
             write_in_file('path/test1.txt', 'content', target_folder='PYTHON_', mode_dev=True)
     """
     if mode_dev is True :
@@ -1012,7 +1013,7 @@ def is_valid_path(path) :
 def path_default(path = None, mode_dev = False) :
 #
     """
-    Allows you to choose or not a default path. 
+    Allows you to choose or not a default path. fun :
     If no path specified, it will be the path of the current project repo,
     otherwise it will be the one given in parameter
     """
