@@ -8,7 +8,8 @@ def formulaire_ennemy() :
     """
     return {
         "position" : [0,0],
-        "distance" : 0,
+        "distance_pm" : 0,
+        "distance_door" : 0,
         "path" : [],
         "life" : 0,
         "Spell" : [""]
@@ -28,7 +29,8 @@ def init_data(mode_dev=False) :
         "Ennemy" : [
             {
                 "position" : [0,0],
-                "distance" : 0,
+                "distance_door" : 0,
+                "distance_pm" : 0,
                 "path" : [],
                 "life" : 0,
                 "Spell" : [""]
@@ -37,7 +39,6 @@ def init_data(mode_dev=False) :
         "Player" :
         {
             "position" : [0,0],
-            "distance" : 0,
             "action" : [""],
             "life" : 0,
             "Spell" : [""]
@@ -45,7 +46,8 @@ def init_data(mode_dev=False) :
         "Invocation" : [
             {
                 "position" : [0,0],
-                "distance" : 0,
+                "distance_pm" : 0,
+                "distance_door" : [0,0],
                 "action" : [""],
                 "life" : 0,
                 "Spell" : [""]
@@ -54,7 +56,8 @@ def init_data(mode_dev=False) :
         "Allie" : [
             {
                 "position" : [0,0],
-                "distance" : 0,
+                "distance_pm" : 0,
+                "distance_door" : [0,0],
                 "action" : [""],
                 "life" : 0,
                 "Spell" : [""]
