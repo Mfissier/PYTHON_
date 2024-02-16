@@ -21,9 +21,9 @@ def main() :
     """
     map_2d = [
         ["E","0","0","0","0","0","0","0","1"],
-        ["0","0","E","0","0","0","1","0","0"],
+        ["0","0","E","0","0","0","1","E","0"],
         ["E","1","1","1","1","1","1","1","0"],
-        ["0","0","0","0","0","P","1","0","0"]
+        ["0","0","P","0","0","0","1","0","0"]
     ]
     import json
     BOT_IA = init_data() # Create the file IA.json
@@ -39,7 +39,6 @@ def main() :
         print_red("The calcul failed !")
         return False
     #
-    door_distance([0,9], [5,9], mode_dev=True)
 #
 if __name__ == "__main__":
     main()
