@@ -41,6 +41,7 @@ def init_data(mode_dev=False) :
             "position" : [0,0],
             "action" : [""],
             "life" : 0,
+            "Visibility" : [""],
             "Spell" : [""]
         },
         "Invocation" : [
