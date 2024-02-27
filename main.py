@@ -10,7 +10,7 @@ from syst_exp.fill_all_map2D_diff_ennemies import fill_all_map2D_diff_ennemies
 from syst_exp.fill_map2D_origin import fill_map2D_origin
 from syst_exp.handler_data.player_pos import player_pos
 from syst_exp.list_to_2d_array import list_to_2d_array
-from syst_exp.raycast2D import raycast_save2D
+from syst_exp.raycast2D import get_visible_tiles2D
 from utils.files.pyos import *
 from syst_exp.calculate_player_to_enemy_moves import calculate_player_to_enemy_moves
 import json
@@ -41,7 +41,7 @@ def main() :
         return False
     #
     BOT_IA = json.loads(BOT_IA)
-    raycast_save2D(BOT_IA,  map_2d, playerpos, mode_dev=True)
+    get_visible_tiles2D(BOT_IA,  map_2d, playerpos, mode_dev=True)
 #
 if __name__ == "__main__":
     main()

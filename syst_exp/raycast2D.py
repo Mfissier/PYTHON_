@@ -26,7 +26,7 @@ def norm_grid(grid) :
 #
     
 
-def raycast_save2D(BOT_IA, grid, player_position, mode_dev=False) :
+def get_visible_tiles2D(BOT_IA, grid, player_position, mode_dev=False) :
 #
     """
     This function is used to save the visible cells in the json file.
