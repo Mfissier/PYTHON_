@@ -24,6 +24,7 @@ def fill_all_map2D_diff_ennemies(map2D_origin, player_pos = False, mode_dev=Fals
     ]
     fill_all_map2D_diff_ennemies(map_2d)
     """
+
     if mode_dev :
         print_blue("Fun :fill_all_map2D_diff_ennemies :")
     map_2d = create_maps_with_different_enemies(map2D_origin, mode_dev=mode_dev)
@@ -53,6 +54,8 @@ def fill_all_map2D_diff_ennemies(map2D_origin, player_pos = False, mode_dev=Fals
             print_red("The file [IA.json] error : the key [Ennemy] not found.")
         return False
     #
+    BOT_IA["Player"]["position"] = player_pos
+    print(BOT_IA)
     i = 0
     for map in map_2d:
         result = calculate_player_to_enemy_moves(map, mode_dev=mode_dev)
