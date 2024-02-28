@@ -15,6 +15,7 @@ from utils.files.pyos import *
 from syst_exp.calculate_player_to_enemy_moves import calculate_player_to_enemy_moves
 import json
 from syst_exp.handler_data.init_data import init_data
+
 def main() :
 #
     """
@@ -26,9 +27,8 @@ def main() :
         ["0","0","1","0","0","0","1","1","0"],
         ["0","0","P","0","0","0","1","0","0"]
     ]
-
     import json
-    BOT_IA = init_data() # Create the file IA.json
+    BOT_IA = init_data()
     if (fill_map2D_origin(map_2d) == False) :
     #
         print_red("The map is None.")
@@ -44,5 +44,6 @@ def main() :
     BOT_IA = json.loads(BOT_IA)
     get_visible_tiles2D(BOT_IA,  map_2d, playerpos, mode_dev=True)
 #
+
 if __name__ == "__main__":
     main()

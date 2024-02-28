@@ -54,6 +54,12 @@ def get_visible_tiles2D(BOT_IA, grid, player_position, mode_dev=False) :
         return False
     #
     tmp_grid = BOT_IA["Map"]
+    if tmp_grid is None:
+    #
+        if mode_dev:
+            print_red("The map is None.")
+        return False
+    #
     for i in range(len(grid)):
     #
         for j in range(len(grid[i])):
@@ -81,6 +87,5 @@ def get_visible_tiles2D(BOT_IA, grid, player_position, mode_dev=False) :
             print_yellow(cell)
         #
     #
-    
     return grid
 #
