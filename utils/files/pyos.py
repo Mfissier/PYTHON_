@@ -582,75 +582,80 @@ def check_file_is_clone(name, target_folder=None, mode_dev=False) :
         print_green('The file is unique')
     return False
 #
+import os
 
-def find_file(name, target_folder = None , mode_dev=False):
-#
+def find_file(name, target_folder=None, mode_dev=False):
     """
-        Search and take path with filename
-        args :
-            name (string) : name of file
-            target_folder (string /optional) : path of folder
-            mode_dev (bool /optionnal) : True for see diagnostique
-        return :
-            path (string) : path of file or None if error
-        exept :
-            if file not found or file is clone in the folder
-        exemple :
+        Search for a file path based on the filename.
+        
+        Args:
+            name (str): Name of the file to search for.
+            target_folder (str, optional): Path to the folder to search within.
+            mode_dev (bool, optional): Set to True to enable diagnostic messages.
+        
+        Returns:
+            str: Path to the file if found, or None if not found.
+        
+        Example:
             find_file('main.py', target_folder='PYTHON_')
-            # search the path of file main.py in the folder PYTHON_
+            # Search for the path of 'main.py' in the 'PYTHON_' folder.
     """
-    if mode_dev is True :
-        print_blue('Fun : find_file()')
-    if name is None :
+    if mode_dev:
+        print_blue('Function: find_file()')
+    
+    if name is None:
     #
-        if mode_dev is True :
-            print_red('Var name is None')
+        if mode_dev:
+            print_red('Error: Variable "name" is None')
         return None
     #
-    name = os.path.basename(name)
-    path = os.path.dirname(os.path.join(os.getcwd(), ''))
-    if target_folder is not None :
+    
+    path = os.path.expanduser('~') 
+    if target_folder is not None:
     #
         path = find_folder(target_folder)
-        if path == None :
+        if path is None:
         #
-            print_red('Error : target_folder does not exist')
+            if mode_dev:
+                print_red('Error: target_folder does not exist')
             return None
         #
-        print_yellow('Mode target_folder activate :\n' + path)
+        if mode_dev:
+            print_yellow(f'Mode target_folder activated:\n{path}')
     #
-    if (check_file_is_clone(name, target_folder, mode_dev) is True) :
+    
+    if check_file_is_clone(name, target_folder, mode_dev):
     #
-        if mode_dev is True :
+        if mode_dev:
         #
-            print_red('A potential error has been found. \n' +
-                      'The search file exists in several copies.')
+            print_red('Potential error: The file exists in multiple copies.')
             print_blue('<------------------------')
         #
-        return (None)
+        return None
     #
-    for root, dir, files in os.walk(path) :
+
+    # Walk through the directory to find the file
+    for root, dirs, files in os.walk(path):
     #
-        for elem in files :
-        # 
-            if name in elem :
+        for elem in files:
+        #
+            if name in elem:
             #
-                if mode_dev is True :
+                if mode_dev:
                 #
-                    print_green(f"Result path is :\n{os.path.join(root, name)}")
+                    print_green(f"File found at path:\n{os.path.join(root, name)}")
                     print_blue('----------------')
-                #
                 return os.path.join(root, name)
+                #
             #
         #
     #
-    if mode_dev is True :
+    if mode_dev:
     #
-        print_red('The path was not found')
-        print_blue('----------------')
+        print_red('File path was not found')
+        print_blue('----------------')    
     #
     return None
-#
 
 def ls_files(path, target_folder=None, mode_dev=False) :
 #

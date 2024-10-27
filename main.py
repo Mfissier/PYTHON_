@@ -15,13 +15,13 @@ from utils.files.pyos import *
 from syst_exp.calculate_player_to_enemy_moves import calculate_player_to_enemy_moves
 import json
 from syst_exp.handler_data.init_data import init_data
-
+from create_data.create_data_set import *
 def main() :
 #
     """
     This main is juste for test
     """
-    
+    normalize_json("/path")
 #
 
 if __name__ == "__main__":
