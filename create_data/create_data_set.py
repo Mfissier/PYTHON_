@@ -156,7 +156,7 @@ def tokenize_json_file(input_path, model_name, mod_dev = False):
             print_red(f"Folder raw_data not found")
         return None
     #
-    output_path += "/" + get_filename_without_extension(input_path) + "_raw.json" 
+    output_path += "/" + get_filename_without_extension(input_path) + "_"+ get_filename_without_extension(model_name) +"raw.json" 
     try:
     # 
         with open(output_path, 'w', encoding='utf-8') as file:
