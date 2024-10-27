@@ -26,6 +26,7 @@
         check_operating_system(mod_dev = False)
         is_folder_exist(folder, target_folder=None)
         is_file_search(path, mode_dev = False)
+        def get_filename_from_path(path):
     
     comment :
         This module is a library for file management and dev more easely
@@ -79,6 +80,46 @@ class file :
         file.new_time = time
         return (time)
     #
+#
+
+import os
+
+def get_filename_without_extension(path):
+    """
+    Extracts the filename without the extension from a given file path.
+    
+    Args:
+        path (str): The full or relative path to the file.
+    
+    Returns:
+        str: The filename without the extension.
+    
+    Example:
+        get_filename_without_extension("/data/path/script/salut.json")
+        # Output: "salut"
+    """
+    # Use os.path.splitext to split the filename and extension
+    return os.path.splitext(os.path.basename(path))[0]
+
+def get_filename_from_path(path):
+#
+    """
+    Extracts and returns the filename from a given file path.
+    
+    Args:
+        path (str): The full or relative path to the file.
+    
+    Returns:
+        str: The filename with extension.
+    
+    Example:
+        get_filename_from_path("/data/path/script/salut.json")
+        # Output: "salut.json"
+        
+        get_filename_from_path("salut.json")
+        # Output: "salut.json"
+    """
+    return os.path.basename(path)
 #
 
 def create_json_file(data, file_name, mode_dev=False) :
@@ -476,60 +517,66 @@ def check_folder_is_clone(name, target_folder=None, mode_dev=False) :
     return (os.path.normpath(all_path[0]))
 #
 
-def find_folder(name,  target_folder=None, mode_dev=False) :
+import os
+
+def find_folder(name, target_folder=None, mode_dev=False):
 #
     """
-        Description :
-            Search the folder path in the current directory
+        Description:
+            Search for the folder path starting from the home directory or a target folder.
         Args:
-            name (string): The name of the folder to search for
-            mode_dev (bool, optional): True for see diagnostique
+            name (str): The name of the folder to search for.
+            target_folder (str, optional): Path of the folder to start the search in.
+            mode_dev (bool, optional): True to enable diagnostic messages.
         Returns:
-            (string): The folder path or None if there was an error
-        Exept : 
-            Limite of search in ".." or redirects the search to the current directory
-        exemple :
+            str: The folder path or None if not found.
+        Exept:
+            Limits search to the home directory if no target folder is provided.
+        
+        Example:
             find_folder('PYTHON_', target_folder='PYTHON_')
-            # search the path of folder PYTHON_ in the folder PYTHON_    
+            # Searches for 'PYTHON_' folder starting in 'PYTHON_'
     """
-    if mode_dev is True :
-        print_blue('Fun : find_folder')
-    if name is None :
+    if mode_dev:
+        print_blue('Function: find_folder')
+    
+    if name is None:
     #
-        print_red('Error : Var name is None')
+        print_red('Error: Variable "name" is None')
         return None
     #
-    if name == '.':
+
+    # Set the starting path
+    path = os.path.expanduser('~')  # Start from home directory by default
+    if target_folder is not None:
     #
-        if mode_dev is True :
-            print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), ''))))
-        return os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '')))
+        path = os.path.join(path, target_folder)  # Specify target folder path within home directory
+        if not os.path.exists(path):
+        #
+            if mode_dev:
+                print_red(f'Error: target_folder "{target_folder}" does not exist in the home directory')
+            return None
+        #
+        if mode_dev:
+            print_yellow(f'Starting search in target folder: {path}')    
     #
-    if name == '..':
+
+    # Walk through the directory tree to find the folder
+    for root, dirs, files in os.walk(path):
     #
-        if mode_dev is True :
-            print_yellow('Path redir : ' + os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '..'))))        
-        return os.path.normpath(os.path.dirname(os.path.join(os.getcwd(), '..')))
-    #
-    path = os.path.dirname(os.path.join(os.getcwd(), '.'))
-    for root, dir, files in os.walk(path) :
-    #
-        for elem in dir :
-        #        
+        for elem in dirs:
+        #
             if name == elem:
             #
-                if mode_dev is True :
-                    print_yellow(f'Path directory is : {os.path.normpath(os.path.join(root, elem))}')
-                if target_folder is not None :
-                        return (check_folder_is_clone(name, target_folder=target_folder, mode_dev=mode_dev))
-                else :
-                        return (check_folder_is_clone(name, mode_dev=mode_dev))
+                if mode_dev:
+                    print_yellow(f'Folder found at: {os.path.normpath(os.path.join(root, elem))}')
+                return os.path.normpath(os.path.join(root, elem))
             #
         #
     #
-    if mode_dev is True :
-        print_yellow('Path directory not found !')
-    return (None)
+    if mode_dev:
+        print_red('Folder not found!')
+    return None
 #
 
 def check_file_is_clone(name, target_folder=None, mode_dev=False) :

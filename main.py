@@ -21,7 +21,7 @@ def main() :
     """
     This main is juste for test
     """
-    normalize_json("/path")
+    normalize_json("all_samples_train1.json", mod_dev = True)
 #
 
 if __name__ == "__main__":
