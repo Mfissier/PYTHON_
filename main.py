@@ -21,28 +21,7 @@ def main() :
     """
     This main is juste for test
     """
-    map_2d = [
-        ["0","0","0","0","0","0","0","0","1"],
-        ["0","0","E","0","0","0","0","0","0"],
-        ["0","0","1","0","0","0","1","1","0"],
-        ["0","0","P","0","0","0","1","0","0"]
-    ]
-    import json
-    BOT_IA = init_data()
-    if (fill_map2D_origin(map_2d) == False) :
-    #
-        print_red("The map is None.")
-        return False
-    #
-    BOT_IA = readfile_to_json('data/IA/IA.json')
-    playerpos = player_pos(BOT_IA, mode_dev=True)
-    if (fill_all_map2D_diff_ennemies(map_2d, playerpos) == False) :
-    #
-        print_red("The calcul failed !")
-        return False
-    #
-    BOT_IA = json.loads(BOT_IA)
-    get_visible_tiles2D(BOT_IA,  map_2d, playerpos, mode_dev=True)
+    
 #
 
 if __name__ == "__main__":
