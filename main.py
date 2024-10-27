@@ -21,7 +21,10 @@ def main() :
     """
     This main is juste for test
     """
-    normalize_json("all_samples_train1.json", mod_dev = True)
+
+    # output_path = normalize_json("all_samples_train1.json", mod_dev = True)
+    tokenized_data = tokenize_json_file("all_samples_train1_normalize.json", "openai-community/gpt2", mod_dev=True)
+
 #
 
 if __name__ == "__main__":
