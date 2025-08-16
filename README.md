@@ -56,13 +56,21 @@ normalized_data = normalize_json("dataset.json")
 pip install transformers termcolor
 ```
 ├── create_data
+
 │   └── create_data_set.py
+
 ├── main.py
+
 ├── main_test.py
+
 ├── syst_exp
+
 │   ├── calculate_distance2D.py
+
 │   ├── calculate_player_to_enemy_moves.py
+
 │   ├── create_maps_with_diff_ennemies.py
+
 │   ├── door_distance.py
 │   ├── fill_all_map2D_diff_ennemies.py
 │   ├── fill_map2D_origin.py
