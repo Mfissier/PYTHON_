@@ -57,7 +57,7 @@ pip install transformers termcolor
 ```
 ── create_data 
    └── create_data_set.py
-── main.py
+   ── main.py
 ── main_test.py
 ── syst_exp
    ├── calculate_distance2D.py
